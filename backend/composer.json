@@ -1,0 +1,14 @@
+{
+    "name": "student-management-system/backend",
+    "description": "Student Management System Backend",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "tecnickcom/tcpdf": "^6.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "": ""
+        }
+    }
+}

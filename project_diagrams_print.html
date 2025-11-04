@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System - Project Diagrams (Print Version)</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: A4 landscape;
+            margin: 1cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
+            line-height: 1.4;
+        }
+        
+        /* Cover Page */
+        .cover-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            page-break-after: always;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .cover-page h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .cover-page p {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        
+        .cover-page .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 30px;
+        }
+        
+        /* Diagram Page */
+        .diagram-page {
+            height: 100vh;
+            page-break-after: always;
+            page-break-inside: avoid;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background: white;
+        }
+        
+        .diagram-page:last-child {
+            page-break-after: auto;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        
+        .page-header p {
+            font-size: 1em;
+            opacity: 0.95;
+        }
+        
+        .diagram-container {
+            flex: 1;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .mermaid {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mermaid svg {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            height: auto !important;
+        }
+        
+        /* Tech Stack Page */
+        .tech-page {
+            height: 100vh;
+            page-break-after: always;
+            page-break-inside: avoid;
+            padding: 20px;
+            background: white;
+        }
+        
+        .tech-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .tech-header h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            height: calc(100vh - 200px);
+        }
+        
+        .tech-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .tech-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+        
+        .tech-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .tech-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 1.1em;
+        }
+        
+        .tech-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .diagram-page, .tech-page, .cover-page {
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Cover Page -->
+    <div class="cover-page">
+        <h1>📊 Student Management System</h1>
+        <p>Comprehensive Project Diagrams & Documentation</p>
+        <p class="subtitle">System Architecture | Data Flow | Database Design | Use Cases</p>
+        <p class="subtitle" style="margin-top: 50px; font-size: 1em;">10 Professional Diagrams for Project Report</p>
+    </div>
+    
+    <!-- Diagram 1: System Architecture -->
+    <div class="diagram-page">
+        <div class="page-header">
+            <h2>1. System Architecture Diagram</h2>
+            <p>Three-tier architecture showing Client, Frontend (React), Backend (PHP), and Data (MySQL) layers</p>
+        </div>
+        <div class="diagram-container">
+            <div class="mermaid">
+graph TB
+    subgraph "Client Layer"
+        Browser[Web Browser]
+    end
+    
+    subgraph "Frontend Layer"
+        React[React Application<br/>Vite + Tailwind CSS]
+        Router[React Router]
+        AuthContext[Auth Context]
+        APIService[API Service Axios]
+    end
+    
+    subgraph "Backend Layer"
+        API[API Router]
+        Auth[Auth Middleware]
+        AccessControl[Access Control]
+        
+        subgraph "Controllers"
+            direction LR
+            AuthCtrl[Auth]
+            StudentCtrl[Student]
+            AssessmentCtrl[Assessment]
+            UserCtrl[User]
+            SubjectCtrl[Subject]
+        end
+        
+        subgraph "Models"
+            direction LR
+            UserModel[User]
+            StudentModel[Student]
+            AssessmentModel[Assessment]
+        end
+        
+        JWT[JWT Utility]
+    end
+    
+    subgraph "Data Layer"
+        MySQL[(MySQL Database)]
+    end
+    
+    Browser --> React
+    React --> Router
+    React --> AuthContext
+    React --> APIService
+    APIService -->|HTTP/JSON| API
+    API --> Auth
+    Auth --> AccessControl
+    AccessControl --> Controllers
+    Controllers --> Models
+    Controllers --> JWT
+    Models --> MySQL
+    
+    style Browser fill:#e1f5ff
+    style React fill:#61dafb
+    style API fill:#777bb4
+    style MySQL fill:#00758f
+            </div>
+        </div>
+    </div>
+    
+    <!-- Diagram 2: DFD Level 0 -->
+    <div class="diagram-page">
+        <div class="page-header">
+            <h2>2. Data Flow Diagram - Level 0 (Context Diagram)</h2>
+            <p>External entities and their interactions with the system</p>
+        </div>
+        <div class="diagram-container">
+            <div class="mermaid">
+graph LR
+    Admin[Admin User]
+    Teacher[Teacher User]
+    System[Student Management System]
+    DB[(Database)]
+    
+    Admin -->|Manage Users| System
+    Admin -->|Manage Students| System
+    Admin -->|Manage Subjects| System
+    Admin -->|View Reports| System
+    Admin -->|Backup/Restore| System
+    
+    Teacher -->|View Students| System
+    Teacher -->|Record Assessments| System
+    Teacher -->|View Reports| System
+    
+    System -->|Store/Retrieve| DB
+    System -->|Authentication| Admin
+    System -->|Authentication| Teacher
+    System -->|Reports| Admin
+    System -->|Reports| Teacher
+    
+    style Admin fill:#ff6b6b
+    style Teacher fill:#4ecdc4
+    style System fill:#95e1d3
+    style DB fill:#f38181
+            </div>
+        </div>
+    </div>
+    
+    <!-- Diagram 3: DFD Level 1 -->
+    <div class="diagram-page">
+        <div class="page-header">
+            <h2>3. Data Flow Diagram - Level 1 (Main Processes)</h2>
+            <p>Six main processes: Authentication, Student Management, Assessment, Reports, User Management, Administration</p>
+        </div>
+        <div class="diagram-container">
+            <div class="mermaid">
+graph TB
+    User[User]
+    
+    P1[1.0 Authentication]
+    P2[2.0 Student Management]
+    P3[3.0 Assessment Management]
+    P4[4.0 Report Generation]
+    P5[5.0 User Management]
+    P6[6.0 Administration]
+    
+    D1[(Users)]
+    D2[(Students)]
+    D3[(Assessments)]
+    D4[(Terms)]
+    D5[(Subjects)]
+    
+    User -->|Credentials| P1
+    P1 -->|Token| User
+    P1 -->|Verify| D1
+    
+    User -->|Data| P2
+    P2 -->|Info| User
+    P2 <-->|CRUD| D2
+    
+    User -->|Data| P3
+    P3 -->|Results| User
+    P3 <-->|CRUD| D3
+    P3 -->|Read| D4
+    P3 -->|Read| D5
+    
+    User -->|Request| P4
+    P4 -->|PDF| User
+    P4 -->|Read| D2
+    P4 -->|Read| D3
+    
+    User -->|Data| P5
+    P5 -->|Info| User
+    P5 <-->|CRUD| D1
+    
+    User -->|Actions| P6
+    P6 -->|Status| User
+    P6 <-->|Manage| D5
+    
+    style User fill:#4ecdc4
+    style P1 fill:#ffe66d
+    style P2 fill:#ffe66d
+    style P3 fill:#ffe66d
+    style P4 fill:#ffe66d
+    style P5 fill:#ffe66d
+    style P6 fill:#ffe66d
+            </div>
+        </div>
+    </div>
+    
+    <!-- Diagram 4: ERD -->
+    <div class="diagram-page">
+        <div class="page-header">
+            <h2>4. Entity Relationship Diagram (ERD)</h2>
+            <p>Complete database schema with all tables, attributes, and relationships</p>
+        </div>
+        <div class="diagram-container">
+            <div class="mermaid">
+erDiagram
+    users ||--o{ teacher_class_assignments : "assigned"
+    users ||--o{ teacher_subject_assignments : "assigned"
+    users ||--o{ access_logs : "generates"
+    class_levels ||--o{ students : "contains"
+    class_levels ||--o{ teacher_class_assignments : "assigned"
+    students ||--o{ term_assessments : "has"
+    subjects ||--o{ term_assessments : "assessed"
+    subjects ||--|| subject_weightings : "has"
+    subjects ||--o{ teacher_subject_assignments : "assigned"
+    terms ||--o{ term_assessments : "belongs"
+    
+    users {
+        int id PK
+        varchar username UK
+        varchar password_hash
+        enum role
+        timestamp created_at
+    }
+    
+    students {
+        int id PK
+        varchar student_id UK
+        varchar name
+        int class_level_id FK
+        timestamp created_at
+    }
+    
+    class_levels {
+        int id PK
+        varchar name UK
+        timestamp created_at
+    }
+    
+    subjects {
+        int id PK
+        varchar name UK
+        timestamp created_at
+    }
+    
+    terms {
+        int id PK
+        varchar name
+        varchar academic_year
+        date start_date
+        date end_date
+        boolean is_active
+    }
+    
+    term_assessments {
+        int id PK
+        varchar student_id FK
+        int subject_id FK
+        int term_id FK
+        decimal ca_mark
+        decimal exam_mark
+        decimal final_mark
+    }
+    
+    subject_weightings {
+        int id PK
+        int subject_id FK
+        decimal ca_percentage
+        decimal exam_percentage
+    }
+    
+    teacher_class_assignments {
+        int id PK
+        int user_id FK
+        int class_level_id FK
+    }
+    
+    teacher_subject_assignments {
+        int id PK
+        int user_id FK
+        int subject_id FK
+    }
+    
+    access_logs {
+        int id PK
+        int user_id FK
+        varchar resource_type
+        varchar resource_id
+    }
+            </div>
+        </div>
+    </div>
+    
+    <!-- Diagram 5: Use Case -->
+    <div class="diagram-page">
+        <div class="page-header">
+            <h2>5. Use Case Diagram</h2>
+            <p>System use cases organized by user role with relationships</p>
+        </div>
+        <div class="diagram-container">
+            <div class="mermaid">
+graph TB
+    Admin[Admin User]
+    Teacher[Teacher User]
+    
+    UC1[Login/Logout]
+    UC2[Manage Students]
+    UC3[Manage Users]
+    UC4[Manage Subjects]
+    UC5[Manage Class Levels]
+    UC6[Manage Terms]
+    UC7[Record Assessments]
+    UC8[View Reports]
+    UC9[Generate PDF]
+    UC10[Configure Weightings]
+    UC11[Assign Teachers]
+    UC12[View Logs]
+    UC13[Backup/Restore]
+    
+    Admin --> UC1
+    Teacher --> UC1
+    Admin --> UC2
+    Teacher --> UC2
+    Admin --> UC3
+    Admin --> UC4
+    Admin --> UC5
+    Admin --> UC6
+    Admin --> UC7
+    Teacher --> UC7
+    Admin --> UC8
+    Teacher --> UC8
+    Admin --> UC9
+    Teacher --> UC9
+    Admin --> UC10
+    Admin --> UC11
+    Admin --> UC12
+    Admin --> UC13
+    
+    UC7 -.includes.-> UC10
+    UC8 -.includes.-> UC7
+    UC9 -.includes.-> UC8
+    
+    style Admin fill:#ff6b6b
+    style Teacher fill:#4ecdc4
+    style UC1 fill:#a8e6cf
+    style UC2 fill:#a8e6cf
+    style UC3 fill:#ffd3b6
+    style UC4 fill:#ffd3b6
+    style UC5 fill:#ffd3b6
+    style UC6 fill:#ffd3b6
+    style UC7 fill:#ffaaa5
+    style UC8 fill:#ffaaa5
+    style UC9 fill:#ffaaa5
+    style UC10 fill:#ffd3b6
+    style UC11 fill:#ffd3b6
+    style UC12 fill:#ffd3b6
+    style UC13 fill:#ff8b94
+            </div>
+        </div>
+    </div>
+    
+    <!-- Diagram 6: Authentication Flow -->
+    <div class="diagram-page">
+        <div class="page-header">
+            <h2>6. Authentication Flow Chart</h2>
+            <p>User authentication process with token validation and role-based routing</p>
+        </div>
+        <div class="diagram-container">
+            <div class="mermaid">
+flowchart TD
+    Start([User Access])
+    CheckToken{Token Exists?}
+    ValidateToken{Token Valid?}
+    ShowLogin[Login Page]
+    EnterCreds[Enter Credentials]
+    ValidateCreds{Valid?}
+    GenerateToken[Generate JWT]
+    StoreToken[Store Token]
+    CheckRole{Role?}
+    AdminDash[Admin Dashboard]
+    TeacherDash[Teacher Dashboard]
+    ShowError[Error]
+    End([End])
+    
+    Start --> CheckToken
+    CheckToken -->|No| ShowLogin
+    CheckToken -->|Yes| ValidateToken
+    ValidateToken -->|Invalid| ShowLogin
+    ValidateToken -->|Valid| CheckRole
+    ShowLogin --> EnterCreds
+    EnterCreds --> ValidateCreds
+    ValidateCreds -->|Invalid| ShowError
+    ShowError --> ShowLogin
+    ValidateCreds -->|Valid| GenerateToken
+    GenerateToken --> StoreToken
+    StoreToken --> CheckRole
+    CheckRole -->|Admin| AdminDash
+    CheckRole -->|Teacher| TeacherDash
+    AdminDash --> End
+    TeacherDash --> End
+    
+    style Start fill:#a8e6cf
+    style End fill:#ff8b94
+    style ShowLogin fill:#ffd3b6
+    style ShowError fill:#ffaaa5
+            </div>
+        </div>
+    </div>
+    
+    <!-- Diagram 7: Assessment Flow -->
+    <div class="diagram-page">
+        <div class="page-header">
+            <h2>7. Assessment Recording Flow Chart</h2>
+            <p>Process for recording assessments with access control and validation</p>
+        </div>
+        <div class="diagram-container">
+            <div class="mermaid">
+flowchart TD
+    Start([Start])
+    SelectTerm[Select Term]
+    SelectStudent[Select Student]
+    CheckAccess{Has Access?}
+    SelectSubject[Select Subject]
+    CheckSubject{Has Access?}
+    GetWeight[Get Weighting]
+    EnterCA[Enter CA Mark]
+    ValidCA{Valid?}
+    EnterExam[Enter Exam]
+    ValidExam{Valid?}
+    CalcFinal[Calculate Final]
+    CheckExists{Exists?}
+    UpdateDB[Update]
+    InsertDB[Insert]
+    Success[Success]
+    Error[Error]
+    LogAccess[Log Denial]
+    End([End])
+    
+    Start --> SelectTerm
+    SelectTerm --> SelectStudent
+    SelectStudent --> CheckAccess
+    CheckAccess -->|No| LogAccess
+    LogAccess --> Error
+    CheckAccess -->|Yes| SelectSubject
+    SelectSubject --> CheckSubject
+    CheckSubject -->|No| LogAccess
+    CheckSubject -->|Yes| GetWeight
+    GetWeight --> EnterCA
+    EnterCA --> ValidCA
+    ValidCA -->|Invalid| Error
+    ValidCA -->|Valid| EnterExam
+    EnterExam --> ValidExam
+    ValidExam -->|Invalid| Error
+    ValidExam -->|Valid| CalcFinal
+    CalcFinal --> CheckExists
+    CheckExists -->|Yes| UpdateDB
+    CheckExists -->|No| InsertDB
+    UpdateDB --> Success
+    InsertDB --> Success
+    Success --> End
+    Error --> End
+    
+    style Start fill:#a8e6cf
+    style End fill:#ff8b94
+    style Success fill:#dcedc1
+    style Error fill:#ffaaa5
+    style LogAccess fill:#ff8b94
+            </div>
+        </div>
+    </div>
+    
+    <!-- Diagram 8: Database Schema -->
+    <div class="diagram-page">
+        <div class="page-header">
+            <h2>8. Database Schema Diagram</h2>
+            <p>Visual representation of tables grouped by functionality</p>
+        </div>
+        <div class="diagram-container">
+            <div class="mermaid">
+graph TB
+    subgraph Core["Core Tables"]
+        Users[users<br/>id, username<br/>password, role]
+        Students[students<br/>id, student_id<br/>name, class_id]
+        Classes[class_levels<br/>id, name]
+        Subjects[subjects<br/>id, name]
+    end
+    
+    subgraph Assessment["Assessment Tables"]
+        Terms[terms<br/>id, name<br/>academic_year<br/>dates, active]
+        Assessments[term_assessments<br/>id, student_id<br/>subject_id, term_id<br/>ca_mark, exam_mark<br/>final_mark]
+        Weights[subject_weightings<br/>id, subject_id<br/>ca_percent<br/>exam_percent]
+    end
+    
+    subgraph Access["Access Control"]
+        TeachClass[teacher_class<br/>user_id<br/>class_id]
+        TeachSubj[teacher_subject<br/>user_id<br/>subject_id]
+        Logs[access_logs<br/>user_id<br/>resource_type<br/>resource_id]
+    end
+    
+    Classes -->|1:N| Students
+    Students -->|1:N| Assessments
+    Subjects -->|1:N| Assessments
+    Subjects -->|1:1| Weights
+    Terms -->|1:N| Assessments
+    Users -->|1:N| TeachClass
+    Classes -->|1:N| TeachClass
+    Users -->|1:N| TeachSubj
+    Subjects -->|1:N| TeachSubj
+    Users -->|1:N| Logs
+    
+    style Users fill:#ff6b6b
+    style Students fill:#4ecdc4
+    style Classes fill:#95e1d3
+    style Subjects fill:#95e1d3
+    style Terms fill:#ffe66d
+    style Assessments fill:#ffaaa5
+    style Weights fill:#ffd3b6
+    style TeachClass fill:#a8e6cf
+    style TeachSubj fill:#a8e6cf
+    style Logs fill:#dcedc1
+            </div>
+        </div>
+    </div>
+    
+    <!-- Diagram 9: Report Generation -->
+    <div class="diagram-page">
+        <div class="page-header">
+            <h2>9. Report Generation Flow Chart</h2>
+            <p>PDF report generation with data fetching and calculations</p>
+        </div>
+        <div class="diagram-container">
+            <div class="mermaid">
+flowchart TD
+    Start([Start])
+    SelectType{Report Type?}
+    SelectStudent[Select Student]
+    SelectClass[Select Class]
+    SelectTerm[Select Term]
+    CheckStudentAccess{Access?}
+    CheckClassAccess{Access?}
+    FetchAssess[Fetch Assessments]
+    FetchWeight[Fetch Weightings]
+    CalcAvg[Calculate Averages]
+    CalcGrade[Calculate Grades]
+    FormatData[Format Data]
+    GenPDF[Generate PDF]
+    Download[Download]
+    Error[Error]
+    LogAccess[Log Denial]
+    End([End])
+    
+    Start --> SelectType
+    SelectType -->|Student| SelectStudent
+    SelectType -->|Class| SelectClass
+    SelectStudent --> SelectTerm
+    SelectClass --> SelectTerm
+    SelectTerm --> CheckStudentAccess
+    SelectTerm --> CheckClassAccess
+    CheckStudentAccess -->|No| LogAccess
+    CheckClassAccess -->|No| LogAccess
+    LogAccess --> Error
+    CheckStudentAccess -->|Yes| FetchAssess
+    CheckClassAccess -->|Yes| FetchAssess
+    FetchAssess --> FetchWeight
+    FetchWeight --> CalcAvg
+    CalcAvg --> CalcGrade
+    CalcGrade --> FormatData
+    FormatData --> GenPDF
+    GenPDF --> Download
+    Download --> End
+    Error --> End
+    
+    style Start fill:#a8e6cf
+    style End fill:#ff8b94
+    style GenPDF fill:#ffe66d
+    style Download fill:#dcedc1
+    style Error fill:#ffaaa5
+            </div>
+        </div>
+    </div>
+    
+    <!-- Diagram 10: Access Control -->
+    <div class="diagram-page">
+        <div class="page-header">
+            <h2>10. Access Control Flow Chart</h2>
+            <p>Role-based access control with teacher permission validation</p>
+        </div>
+        <div class="diagram-container">
+            <div class="mermaid">
+flowchart TD
+    Start([API Request])
+    ValidToken{Token Valid?}
+    ExtractUser[Extract User]
+    CheckRole{Role?}
+    AdminAccess[Full Access]
+    CheckResource{Resource?}
+    CheckStudent[Check Student]
+    CheckClass[Check Class]
+    CheckSubject[Check Subject]
+    GetAssign[Get Assignments]
+    ValidAccess{Allowed?}
+    GrantAccess[Process Request]
+    DenyAccess[403 Forbidden]
+    LogDenial[Log Denial]
+    Return401[401 Unauthorized]
+    End([End])
+    
+    Start --> ValidToken
+    ValidToken -->|Invalid| Return401
+    ValidToken -->|Valid| ExtractUser
+    ExtractUser --> CheckRole
+    CheckRole -->|Admin| AdminAccess
+    CheckRole -->|Teacher| CheckResource
+    AdminAccess --> GrantAccess
+    CheckResource -->|Student| CheckStudent
+    CheckResource -->|Class| CheckClass
+    CheckResource -->|Subject| CheckSubject
+    CheckStudent --> GetAssign
+    CheckClass --> GetAssign
+    CheckSubject --> GetAssign
+    GetAssign --> ValidAccess
+    ValidAccess -->|Yes| GrantAccess
+    ValidAccess -->|No| LogDenial
+    LogDenial --> DenyAccess
+    GrantAccess --> End
+    DenyAccess --> End
+    Return401 --> End
+    
+    style Start fill:#a8e6cf
+    style End fill:#ff8b94
+    style GrantAccess fill:#dcedc1
+    style DenyAccess fill:#ffaaa5
+    style Return401 fill:#ffaaa5
+    style AdminAccess fill:#ffe66d
+            </div>
+        </div>
+    </div>
+    
+    <!-- Technology Stack Page -->
+    <div class="tech-page">
+        <div class="tech-header">
+            <h2>Technology Stack Summary</h2>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <h3>🎨 Frontend</h3>
+                <ul>
+                    <li>React 18.2</li>
+                    <li>React Router 6.20</li>
+                    <li>Axios for API calls</li>
+                    <li>Tailwind CSS 4.1</li>
+                    <li>Vite 5.0 build tool</li>
+                </ul>
+            </div>
+            
+            <div class="tech-card">
+                <h3>⚙️ Backend</h3>
+                <ul>
+                    <li>PHP 7.4+</li>
+                    <li>Custom MVC architecture</li>
+                    <li>JWT authentication</li>
+                    <li>TCPDF for PDF generation</li>
+                    <li>PDO for database access</li>
+                </ul>
+            </div>
+            
+            <div class="tech-card">
+                <h3>💾 Database</h3>
+                <ul>
+                    <li>MySQL 5.7+ / MariaDB</li>
+                    <li>InnoDB engine</li>
+                    <li>UTF-8 character set</li>
+                    <li>Foreign key constraints</li>
+                    <li>Indexed queries</li>
+                </ul>
+            </div>
+            
+            <div class="tech-card">
+                <h3>🔒 Security</h3>
+                <ul>
+                    <li>JWT token authentication</li>
+                    <li>Role-based access control</li>
+                    <li>Teacher resource permissions</li>
+                    <li>Password hashing</li>
+                    <li>SQL injection prevention</li>
+                    <li>Access audit logging</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize Mermaid with print-friendly settings
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            er: {
+                useMaxWidth: true
+            }
+        });
+        
+        // Wait for all diagrams to render before printing
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                console.log('All diagrams loaded. Ready to print!');
+                // Uncomment the line below to auto-print when page loads
+                // window.print();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
